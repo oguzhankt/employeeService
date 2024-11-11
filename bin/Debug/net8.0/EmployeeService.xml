@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EmployeeService</name>
+    </assembly>
+    <members>
+        <member name="T:EmployeeService.Controllers.EmployeeController">
+            <summary>
+            Controller for employee CRUD operations
+            </summary>
+        </member>
+    </members>
+</doc>
