@@ -3,6 +3,8 @@ using EmployeeService.Models;
 using EmployeeService.Models.Requests;
 using EmployeeService.Models.Responses;
 using EmployeeService.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +15,7 @@ namespace EmployeeService.Controllers;
 /// </summary>
 [Route("[controller]")]
 [ApiController]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class EmployeeController : Controller
 {
     private readonly ILogger<EmployeeController> _logger;
@@ -89,7 +92,7 @@ public class EmployeeController : Controller
         {
             bool success = await _employeeService.DeleteEmployeeAsync(id);
             
-            return success ? NotFound() : NoContent();
+            return success ? NoContent() : NotFound();
         }
         catch (Exception ex)
         {
